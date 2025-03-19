@@ -1,11 +1,11 @@
-module Rendered where
+module Renderable where
 import Vector
 
 type Point = Vec3 
 type Color = Vec3 -- (R, G, B)
 
 data Ray = Ray {from :: Point, direction :: Vec3} 
-class Rendered a where
+class Renderable a where
     norm :: Point -> a -> Vec3
     color :: Point -> a -> Color
     trace :: Ray -> a -> Maybe Double -- расстояние до пересечения
