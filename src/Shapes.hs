@@ -1,13 +1,13 @@
 module Shapes where
-import Rendered
+import Renderable
 import Vector
 
 data Sphere = Sphere {center :: Vec3, radius :: Double, sphereColor :: Color, reflectivity :: Double}
     deriving Show
 
-instance Rendered Sphere where
+instance Renderable Sphere where
     norm :: Point -> Sphere -> Vec3
-    norm p (Sphere c r _ _) = normalize $ sub c p
+    norm p (Sphere c r _ _) = normalise $ sub c p
 
     trace :: Ray -> Sphere -> Maybe Double -- пересечение прямой и шара
     -- links [5]
@@ -21,5 +21,7 @@ instance Rendered Sphere where
                     then Nothing
                 else Just ((-b - sqrt d) / 2.0 * a )
 
-    -- color :: Point -> Sphere -> Color
-    -- color _ _ = Color 128.0 128.0 0.0 ??
+    color :: Point -> Sphere -> Color
+    color _ = sphereColor 
+
+
