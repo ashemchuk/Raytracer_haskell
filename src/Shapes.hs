@@ -7,12 +7,12 @@ data Sphere = Sphere {center :: Vec3, radius :: Double, sphereColor :: Color, re
 
 instance Renderable Sphere where
     norm :: Point -> Sphere -> Vec3
-    norm p (Sphere c r _ _) = normalise $ sub c p
+    norm p (Sphere c r _ _) = normalize (c - p)
 
     trace :: Ray -> Sphere -> Maybe Double -- пересечение прямой и шара
     -- links [5]
     trace (Ray o dir) (Sphere center r _ _) =
-        let oc = sub o center
+        let oc = (o - center)
             a = dot dir dir
             b = 2.0 * dot oc dir
             c = dot oc oc - r * r
