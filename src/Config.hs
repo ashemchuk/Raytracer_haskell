@@ -1,8 +1,12 @@
 module Config where
 import Renderable (Ray, Point)
 import Vector
-height = 64
-width = 64
+width :: Int
+width = 45
+aspectRatio :: Double
+aspectRatio = 16.0 / 9.0
+height :: Integer
+height = floor $  aspectRatio * fromIntegral width
 camera :: Point
 camera = Vec3 (-viewField) 0 0
 viewField :: Double

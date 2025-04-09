@@ -29,5 +29,5 @@ main = do
     let out = "output.ppm"
     
     writeFile out $ "P3\n" ++ show height ++ " " ++ show width ++ "\n" ++ "255" ++ "\n"
-    appendFile out $ foldl (\acc (r, g, b) -> acc ++ show r ++ " " ++ show g ++ " " ++ show b ++ "\n")  "" [(floor $ (fromIntegral r / fromIntegral width) *  255.99, floor $  ( fromIntegral g / fromIntegral height) * 255.99, floor $ b * 255.99) | g <- [1 .. height], r <- [1 .. width], b <- [0]] 
+    appendFile out $ foldl (\acc (r, g, b) -> acc ++ show r ++ " " ++ show g ++ " " ++ show b ++ "\n")  "" [(floor $ (fromIntegral r / fromIntegral width) *  255.99, floor $  ( fromIntegral g / fromIntegral height) * 255.99, floor $ b * 255.99) |  r <- [0 .. (width - 1)], g <- [0 .. (height - 1)], b <- [0]] 
 
