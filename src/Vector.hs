@@ -1,8 +1,9 @@
 module Vector where
 
 data Vec3 =  Vec3 {x :: Double, y :: Double, z :: Double}
-    deriving (Show, Eq)
-
+    deriving Eq
+instance Show Vec3 where
+    show (Vec3 x y z) = show x ++ " " ++ show y ++ " " ++ show z ++ "\n"
 instance Num Vec3 where
     (+) :: Vec3 -> Vec3 -> Vec3
     (+) (Vec3 x1 y1 z1) (Vec3 x2 y2 z2) = Vec3 (x1+x2) (y1+y2) (z1+z2)

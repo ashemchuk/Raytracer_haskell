@@ -24,4 +24,4 @@ instance Renderable Sphere where
     color :: Point -> Sphere -> Color
     color _ = sphereColor 
 
-
+-- data Cube = {}
